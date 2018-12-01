@@ -1,0 +1,72 @@
+
+{% block pagenewcss %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.3/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset("/assets/css/indexNew.css")|raw }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset("/assets/css/feeds1.css")|raw }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset("/css/daterangepicker.min.css")|raw }}" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.3/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset("/assets/css/feed_header_without_backimg.css")|raw }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset("/assets/css/feeds_common_new.css")|raw }}" >
+{% endblock %}
+{% block body %}
+    <section class="container deals_container">
+
+
+        <div class="row">
+            <div class="col-md-9 col-xs-12 right_panel">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row no-margetLoadMoreURLgin">
+                            <div class="col-xs-12 nopad">
+
+				    <div id="searchResults">
+
+    {% for key,val in result %}
+    <div class="#budget-filter-block row no-margin margin_top_45">
+	    <div class="col-sm-4 col-xs-6 nopad xs-full_width">
+		<div class="grey_img_container">
+		    {% if val['dd_newsfeeds_thumb_image'] is defined and val['dd_newsfeeds_thumb_image'] %}
+			<img class="width-100" src="{{asset(val['dd_newsfeeds_thumb_image'])}}" alt="{{val['dd_newsfeeds_thumb_image']}}"/>
+		    {% else %}
+			<img class="width-100" src="../images/default.jpg"/>
+		    {% endif %}
+		</div>
+	    </div>
+	    <div class="col-sm-6 col-xs-12 col-sm-pull-2 nopad">
+		<div class="infotext_container">
+		    <h2>
+                        {{ val['dd_newsfeeds_title']|length > 90 ? val['dd_newsfeeds_title']|striptags|raw|slice(0, 90) ~ '...' : val['dd_newsfeeds_title']|striptags|raw}}
+		    </h2>
+		    <p class="blacktext">
+			{% if val['dd_newsfeeds_short_description'] is defined and val['dd_newsfeeds_short_description'] %}
+			    {{ val['dd_newsfeeds_short_description']|length > 120 ? val['dd_newsfeeds_short_description']|striptags|raw|slice(0, 120) ~ '...' : val['dd_newsfeeds_short_description']|striptags|raw}}
+			{% endif %}
+		    </p>
+		</div>
+	    </div>
+        <div class="col-sm-2 col-xs-6 col-sm-push-6 nopad xs-full_width">
+	    <div class="row no-margin">
+		<div class="xs_pad_left">
+		    <div class="col-xs-12 nopad">
+			<a href="/{{val['dd_id']}}" class="pink_button">{{'learn more'}}</a>
+		    </div>
+		</div>
+	    </div>
+	</div>
+    </div>
+{% endfor %}
+		    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 margin_top_45">
+                                <div class="row no-margin">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
