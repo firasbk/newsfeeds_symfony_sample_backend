@@ -1,5 +1,5 @@
-FiBo-Developer-App
-==================
+News Feed Using Symfony Sample Backend
+======================================
 
 A Symfony project created on October 12, 2018, 5:11 pm.
 
